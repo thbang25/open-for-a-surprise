@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>💘 Valentine 💘</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      overflow: hidden;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 0, 100, 0.6);
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.88);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      z-index: 10;
+    }
+
+    img {
+      max-width: 300px;
+      border-radius: 15px;
+    }
+
+    h1 {
+      color: #e6005c;
+    }
+
+    .buttons {
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 18px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
+
+    #yesBtn {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating hearts -->
+  <script>
+    for (let i = 0; i < 40; i++) {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = (15 + Math.random() * 30) + "px";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+    }
+  </script>
+
+  <div class="container">
+    <img id="gif"
+      src=".\ojos-del-corazón-gumball.gif"
+      alt="Valentine Gif">
+
+    <h1 id="text"></h1>
+
+    <div class="buttons">
+      <button id="yesBtn" onclick="yesClicked()">Yes 💘</button>
+      <button id="noBtn" onclick="noClicked()">No 😢</button>
+    </div>
+  </div>
+
+  <script>
+    /************ EDIT HER NAME HERE ************/
+    const herName = "Mbalenhle Gigaba";
+    /*******************************************/
+
+    let yesSize = 1;
+
+    document.getElementById("text").innerText =
+      `Will you be my Valentine, ${herName}? 💖`;
+
+    function noClicked() {
+      yesSize += 0.3;
+      document.getElementById("yesBtn").style.transform =
+        `scale(${yesSize})`;
+    }
+
+    function yesClicked() {
+      document.getElementById("gif").src =
+        "https://media.giphy.com/media/26BRv0ThflsHCqDrG/giphy.gif";
+      document.getElementById("text").innerText =
+        `Yay!! 💕 Happy Valentine’s Day, ${herName}! 💕`;
+      document.querySelector(".buttons").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
